@@ -1,7 +1,7 @@
 day = 1 # Fill the day number here
 
-with open(f'./data/day{day}.txt', 'r') as data:
-  l = [x for x in data]
+with open(f'./data/day{day}.txt', 'r') as filedatas:
+    datas = [x for x in filedatas]
 
 answer1 = ''
 answer2 = ''

@@ -1,21 +1,21 @@
-day = 1 # Fill the day number here
+day = 1  # Fill the day number here
 
-with open(f'./data/day{day}.txt', 'r') as data:
-  l = [x for x in data]
+with open(f'./data/day{day}.txt', 'r') as filedatas:
+    datas = [x for x in filedatas]
 
 currentNumber = 0
 biggestNumber = 0
 
-for s in l:
-  if currentNumber > biggestNumber:
-    biggestNumber = currentNumber
+for data in datas:
+    if currentNumber > biggestNumber:
+        biggestNumber = currentNumber
 
-  if s == '\n':
-    currentNumber = 0
-    continue
+    if data == '\n':
+        currentNumber = 0
+        continue
 
-  if int(s) > 0:
-    currentNumber += int(s)
+    if int(data) > 0:
+        currentNumber += int(data)
 
 print(f'--- Day {day} ---')
 print(f'{biggestNumber}')
