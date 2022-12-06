@@ -1,0 +1,1 @@
+for f in ./solutions/*.py; do py "$f"; done
