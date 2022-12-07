@@ -22,5 +22,5 @@ for data in datas:
 maximumCaloriesTop3 = sum(sorted(maximumCaloriesArr)[-3:])
 
 print(f'--- Day {day} ---')
-print(f'{maximumCalories}')
-print(f'{maximumCaloriesTop3}')
+print(f'p1: {maximumCalories}')
+print(f'p2: {maximumCaloriesTop3}')

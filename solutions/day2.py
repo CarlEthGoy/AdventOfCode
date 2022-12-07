@@ -61,5 +61,5 @@ for data in datas:
     pointsPart2 += GAME_VALUE[whatShouldIDo]
 
 print(f'--- Day {day} ---')
-print(pointsPart1)
-print(pointsPart2)
+print(f'p1: {pointsPart1}')
+print(f'p2: {pointsPart2}')
