@@ -1,25 +1,26 @@
-day = 3 # Fill the day number here
+day = 3  # Fill the day number here
 
 with open(f'./data/day{day}.txt', 'r') as filedatas:
     datas = [x for x in filedatas]
 
-sumOfPriorities = 0
 
-def GetValueInPoints(item):
+def get_value_in_points(item):
     if item.isupper():
         return ord(item) - 38
     else:
         return ord(item) - 96
 
-# part1
-for data in datas:
-    #split data in two
-    firstRucksack = list(data[:int(len(data)/2)])
-    secondRucksack = list(data[int(len(data)/2):])
 
-    #find the occurence of the same char, respect uper and lower
+# part1
+sumOfPriorities = 0
+for data in datas:
+    # split data in two
+    firstRucksack = list(data[:int(len(data) / 2)])
+    secondRucksack = list(data[int(len(data) / 2):])
+
+    # find the occurrence of the same char, respect upper and lower
     item = list(set(firstRucksack).intersection(secondRucksack))[0]
-    sumOfPriorities += GetValueInPoints(item)
+    sumOfPriorities += get_value_in_points(item)
 
 # part2
 firstRucksack = []
@@ -39,17 +40,8 @@ for data in datas:
     else:
         thirdRucksack = data
         item = list(set(firstRucksack).intersection(secondRucksack).intersection(thirdRucksack))[0]
-        sumOfPriorities2 += GetValueInPoints(item)
+        sumOfPriorities2 += get_value_in_points(item)
         index = 0
-
-print(firstRucksack)
-print(secondRucksack)
-print(thirdRucksack)
-item = list(set(firstRucksack).intersection(secondRucksack).intersection(thirdRucksack))[0]
-print(item)
-
-
-
 
 print(f'--- Day {day} ---')
 print(f'{sumOfPriorities}')

@@ -3,6 +3,14 @@ day = 2  # Fill the day number here
 with open(f'./data/day{day}.txt', 'r') as filedatas:
     datas = [x for x in filedatas]
 
+def get_corresponding_value_for_elf_pick():
+    return list(ELF_PICK.keys())[list(ELF_PICK.values()).index(elfPick)]
+
+
+def get_corresponding_value_for_my_pick():
+    return list(MY_PICK.keys())[list(MY_PICK.values()).index(myPick)]
+
+
 ELF_PICK = {'Rock': 'A', 'Paper': 'B', 'Scissors': 'C'}
 MY_PICK = {'Rock': 'X', 'Paper': 'Y', 'Scissors': 'Z'}
 MY_PICK_2 = {'X': 'lose', 'Y': 'tie', 'Z': 'win'}
@@ -15,21 +23,15 @@ POINTS_VALUE_2 = {'Rock': 1, 'Paper': 2, 'Scissors': 3}
 
 GAME_VALUE = {'win': 6, 'lose': 0, 'tie': 3}
 
+
+# part1
 pointsPart1 = 0
-
-def GetCorrespondingValueForElfPick():
-    return list(ELF_PICK.keys())[list(ELF_PICK.values()).index(elfPick)]
-
-def GetCorrespondingValueForMyPick():
-    return list(MY_PICK.keys())[list(MY_PICK.values()).index(myPick)]
-
-#part1
 for data in datas:
     elfPick = data[0]
     myPick = data[2]
     pointsPart1 += POINTS_VALUE[myPick]
 
-    if GetCorrespondingValueForMyPick() == GetCorrespondingValueForElfPick():
+    if get_corresponding_value_for_my_pick() == get_corresponding_value_for_elf_pick():
         pointsPart1 += GAME_VALUE['tie']
     elif elfPick == ELF_PICK['Scissors'] and myPick == MY_PICK['Rock'] \
             or elfPick == ELF_PICK['Paper'] and myPick == MY_PICK['Scissors'] \
@@ -38,16 +40,14 @@ for data in datas:
     else:
         pointsPart1 += GAME_VALUE['lose']
 
-
-#part2
+# part2
 pointsPart2 = 0
-
 for data in datas:
-    elfPick = data[0] #A
-    myPick = data[2] #X
+    elfPick = data[0]  # A
+    myPick = data[2]  # X
 
-    elfPickValue = GetCorrespondingValueForElfPick() #Rock
-    whatShouldIDo = MY_PICK_2[myPick] #lose, tie, win
+    elfPickValue = get_corresponding_value_for_elf_pick()  # Rock
+    whatShouldIDo = MY_PICK_2[myPick]  # lose, tie, win
 
     whatIWillPlay = ''
     if whatShouldIDo == 'tie':
@@ -59,6 +59,7 @@ for data in datas:
 
     pointsPart2 += POINTS_VALUE_2[whatIWillPlay]
     pointsPart2 += GAME_VALUE[whatShouldIDo]
+
 
 print(f'--- Day {day} ---')
 print(f'p1: {pointsPart1}')
