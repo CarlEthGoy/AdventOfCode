@@ -4,18 +4,23 @@ with open(f'./data/day{day}.txt', 'r') as filedatas:
     datas = [x for x in filedatas]
 
 currentNumber = 0
-biggestNumber = 0
+maximumCalories = 0
+maximumCaloriesArr = []
 
 for data in datas:
-    if currentNumber > biggestNumber:
-        biggestNumber = currentNumber
+    if currentNumber > maximumCalories:
+        maximumCalories = currentNumber
 
     if data == '\n':
+        maximumCaloriesArr.append(currentNumber)
         currentNumber = 0
         continue
 
     if int(data) > 0:
         currentNumber += int(data)
 
+maximumCaloriesTop3 = sum(sorted(maximumCaloriesArr)[-3:])
+
 print(f'--- Day {day} ---')
-print(f'{biggestNumber}')
+print(f'{maximumCalories}')
+print(f'{maximumCaloriesTop3}')
